@@ -38,4 +38,14 @@ class SimpleKVStoreTestTest {
         assertThat(filtered.map { it.key.key }, equalTo(listOf("foo", "foo1", "foo2")))
     }
 
+    @Test
+    fun `should check for key using exists() method`() {
+        val sks = SimpleKVStore()
+        val myKey = Key("myKey")
+        sks.put(myKey, SKSValue("hello world", SKSValueType.Text))
+
+        assert(sks.exists(myKey))
+        assert(!sks.exists(Key("missingKey")))
+    }
+
 }

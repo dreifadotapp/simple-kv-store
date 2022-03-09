@@ -8,6 +8,7 @@ class SimpleKVStore(initialCapacity: Int = 10) : SKS {
     private val rss = JsonSerialiser()
 
     override fun get(key: Key): SKSKeyValue {
+        if (!lookup.containsKey(key)) throw NoSuchElementException("No entry found for $key")
         val value = lookup[key]!!
         return SKSKeyValue(key, value.data, value.type)
     }

@@ -49,6 +49,14 @@ interface SKSReader {
     fun <T> deserialise(kv: SKSKeyValue): T
 
     fun getList(prefix: Key): Iterable<SKSKeyValue>
+    fun exists(key: Key): Boolean {
+        return try {
+            get(key)
+            true
+        } catch (nse : NoSuchElementException){
+            false
+        }
+    }
 }
 
 interface SKS : SKSReader, SKSWriter
