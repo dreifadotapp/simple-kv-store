@@ -16,7 +16,7 @@ class SimpleKVStore(initialCapacity: Int = 10) : SKS {
     override fun <T> deserialise(kv: SKSKeyValue): T {
         if (kv.type == SKSValueType.Serialisable) {
             @Suppress("UNCHECKED_CAST")
-            return rss.deserialiseData(kv.value as String).any() as T
+            return rss.fromPacket(kv.value as String).any() as T
         } else {
             throw SKSReadException("${kv.type} is not of type SKSValueType.Serialisable")
         }
@@ -48,7 +48,7 @@ class SimpleKVStore(initialCapacity: Int = 10) : SKS {
                     throw SKSWriteException("value is not a valid SKSValueType.Binary type")
             }
             SKSValueType.Serialisable -> {
-                val serialised = rss.serialiseData(kv.value)
+                val serialised = rss.toPacket(kv.value)
                 val sksValue = SKSValue(serialised, kv.type)
                 lookup[kv.key] = sksValue
             }
