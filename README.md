@@ -24,7 +24,6 @@ There payload can in 3 types
 - Plain text (CLOB)
 - Binary (BLOB)
 
-
 ## Adding to a project 
 
 Maven jars are deployed using [JitPack](https://jitpack.io/).
@@ -40,12 +39,11 @@ implementation "com.github.dreifadotapp:simple-kv-store:<release>"
 
 _JitPack build status is at https://jitpack.io/com/github/dreifadotapp/simple-kv-store/$releaseTag/build.log_
 
-  
 ## Dependencies
 
 As with everything in [Dreifa dot App](https://dreifa.app), this library has minimal dependencies.
 
-* Kotlin 1.4
+* Kotlin 1.5
 * Java 11
 * The object [Registry](https://github.com/dreifadotapp/registry#readme)
 * The [Simple Serialisation(sis)](https://github.com/dreifadotapp/simple-serialisation#readme) module
